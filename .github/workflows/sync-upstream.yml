@@ -24,6 +24,6 @@ jobs:
           update-script: |
             VERSION=$(
               curl -sL https://api.github.com/repos/minetest/minetest/releases | 
-              jq .  | grep tag_name | grep -vE "beta|rc" | head -n 1 | cut -d'"' -f4 | tr -d 'v'
+              jq .  | grep tag_name | grep -vE "beta|rc|android" | head -n 1 | cut -d'"' -f4 | tr -d 'v'
             )
             sed -i 's/^\(version: \).*$/\1'"$VERSION"'/' snap/snapcraft.yaml
